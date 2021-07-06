@@ -30,3 +30,6 @@ Note: Because we are not the owners of the dataset, we do not provide here the g
    7. res.top_XXXX_cov.rds: R objects corresponding to the results of the topTrendy function (top dynamic genes) for each tissue
 
 
+3. WGCNA
+   1. WGCNA.md: markdown documentation file
+   2. WGCNA_2.md: markdown documentation file
