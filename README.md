@@ -36,5 +36,6 @@ Note: Because we are not the owners of the dataset, we do not provide here the g
   
 4. WGCNA_2: module-trait associations
    1. WGCNA_2.md: markdown documentation file
-   2. vst_XXXX_counts.txt: vst-transformed count data for each tissue (resulting from the pre-processing and normalization steps)
-   3. coldata_XXXX.txt: sample information for each tissue (resulting from the pre-processing and normalization steps)
+   2. XXXX_dataInput.RData: RData files containing the expression and trait data for each tissue (resulting from the network construction)
+   3. XXXX_networkConstruction-auto.RData: RData files containing the network data for each tissue (resulting from the network construction)
+   4. XXXX_table_sig.txt: top dynamic genes for each tissue (resulting from the segmented regression analysis)
