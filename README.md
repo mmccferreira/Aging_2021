@@ -29,9 +29,12 @@ Note: Because we are not the owners of the dataset, we do not provide here the g
    6. res_XXXX_r2.rds: R objects corresponding to the choice of adjusted R2 threshold for each tissue
    7. res.top_XXXX_cov.rds: R objects corresponding to the results of the topTrendy function (top dynamic genes) for each tissue
 
-
-3. WGCNA: network construction and module-trait associations
-   1. WGCNA.md: markdown documentation file; network construction
+3. WGCNA: network construction
+   1. WGCNA.md: markdown documentation file
    2. vst_XXXX_counts.txt: vst-transformed count data for each tissue (resulting from the pre-processing and normalization steps)
    3. coldata_XXXX.txt: sample information for each tissue (resulting from the pre-processing and normalization steps)
-   4. WGCNA_2.md: markdown documentation file; module-trait associations
+  
+4. WGCNA_2: module-trait associations
+   1. WGCNA_2.md: markdown documentation file
+   2. vst_XXXX_counts.txt: vst-transformed count data for each tissue (resulting from the pre-processing and normalization steps)
+   3. coldata_XXXX.txt: sample information for each tissue (resulting from the pre-processing and normalization steps)
