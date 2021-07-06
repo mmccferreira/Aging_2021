@@ -12,11 +12,17 @@ Margarida Ferreira<sup>1</sup>, Stephany Francisco<sup>1</sup>, Ana R. Soares<su
 
 <sup>#</sup>corresponding author: Manuel A.S. Santos (msantos@ua.pt)
 
-## File description
-1. Normalization.Rmd: Data pre-processing and normalization
-2. Regression.Rmd: Segmented regression analysis
-3. WGCNA.Rmd: 
-4. WGCNA_2.Rmd: 
-5. clusterProfiler.Rmd:
+## Folder and file description
+
+1. Normalization: Data pre-processing and normalization
+   1. Normalization.md: markdown documentation file
+   1. Annotation.txt: ensembl biotype annotation
+
+Note: Because we are not the owners of the dataset, we do not provide here the gene expression data and metadata. For retrieving these files we advise you to download them directly from the GSE132040 entry of the Gene Expression Omnibus database (https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE132040).
+
+2. Regression: Segmented regression analysis
+   1. Normalization.md: markdown documentation file
+   1. Annotation.txt: ensembl biotype annotation
+
 
 
