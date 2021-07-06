@@ -16,13 +16,17 @@ Margarida Ferreira<sup>1</sup>, Stephany Francisco<sup>1</sup>, Ana R. Soares<su
 
 1. Normalization: Data pre-processing and normalization
    1. Normalization.md: markdown documentation file
-   1. Annotation.txt: ensembl biotype annotation
+   2. annotation.txt: ensembl biotype annotation; downloaded in May 17th 2021
 
 Note: Because we are not the owners of the dataset, we do not provide here the gene expression data and metadata. For retrieving these files we advise you to download them directly from the GSE132040 entry of the Gene Expression Omnibus database (https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE132040).
 
 2. Regression: Segmented regression analysis
-   1. Normalization.md: markdown documentation file
-   1. Annotation.txt: ensembl biotype annotation
-
+   1. segmented_regression.md: markdown documentation file
+   2. annotation.txt: ensembl biotype annotation; downloaded in May 17th 2021 (resulting from the pre-processing and normalization steps)
+   3. norm_XXXX_counts.txt: normalized count data (resulting from the pre-processing and normalization steps)
+   4. coldata_XXXX.txt: sample information (resulting from the pre-processing and normalization steps)
+   5. res_XXXX_cov.rds: R objects corresponding to the results of the trendy function for each tissue
+   6. res_XXXX_r2.rds: R objects corresponding to the choice of adjusted R2 threshold for each tissue
+   7. res.top_XXXX_cov.rds: R objects corresponding to the results of the topTrendy function (top dynamic genes) for each tissue
 
 
