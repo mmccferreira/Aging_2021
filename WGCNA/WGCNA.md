@@ -27,6 +27,7 @@ Last updated July 2021
         -   [Muscle](#muscle-1)
         -   [Liver](#liver-1)
         -   [Pancreas](#pancreas-1)
+-   [Session Info](#session-info)
 
 The WGCNA analysis was carried out using the package WGCNA (Langfelder and Horvath 2008) and mainly followed the [tutorials](https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/Tutorials/) provided by the authors.
 
@@ -974,16 +975,6 @@ power: 7 (mean connectivity between 30 and 50; scale free topology fit above 0.8
 
 ## 3.2. Block-wise network construction and module detection
 
-Throughout this tutorial we work with a relatively small data set of 3600 measured probes. However, modern microarrays measure up to 50,000 probe expression levels at once. Constructing and analyzing networks with such large numbers of nodes is computationally challenging even on a large server. We now illustrate a method, implemented in the WGCNA package, that allows the user to perform a network analysis with such a large number of genes. Instead of actually using a very large data set, we will for simplicity pretend that hardware limitations restrict the number of genes that can be analyzed at once to 2000. The basic idea is to use a two-level clustering. First, we use a fast, computationally inexpensive and relatively crude clustering method to pre-cluster genes into blocks of size close to and not exceeding the maximum of 2000 genes. We then perform a full network analysis in each block separately. At the end, modules whose eigengenes are highly correlated are merged. The advantage of the block-wise approach is a much smaller memory footprint (which is the main problem with large data sets on standard desktop computers), and a significant speed-up of the calculations. The trade-off is that due to using a simpler clustering to obtain blocks, the blocks may not be optimal, causing some outlying genes to be assigned to a different module than they would be in a full network analysis. We will now pretend that even the relatively small number of genes, 3600, that we have been using here is too large, and the computer we run the analysis on is not capable of handling more than 2000 genes in one block.
-
-The automatic network construction and module detection function blockwiseModules can handle the splitting into blocks automatically; the user just needs to specify the largest number of genes that can fit in a block:
-
-We have chosen the soft thresholding power 6, a relatively large minimum module size of 30, and a medium sensitivity (deepSplit=2) to cluster splitting. The parameter `mergeCutHeight` is the threshold for merging of modules. We have also instructed the function to return numeric, rather than color, labels for modules, and to save the Topological Overlap Matrix. The output of the function may seem somewhat cryptic, but it is easy to use. For example, `bwnet$colors` contains the module assignment, and `bwnet$MEs` contains the module eigengenes of the modules.
-
-A word of caution for the readers who would like to adapt this code for their own data. The function blockwiseModules has many parameters, and in this example most of them are left at their default value. We have attempted to provide reasonable default values, but they may not be appropriate for the particular data set the reader wishes to analyze. We encourage the user to read the help file provided within the package in the R environment and experiment with tweaking the network construction and module detection parameters. The potential reward is, of course, better (biologically more relevant) results of the analysis.
-
-A second word of caution concerning block size. In particular, the parameter maxBlockSize tells the function how large the largest block can be that the reader’s computer can handle. In this example we have set the maximum block size to 2000 to illustrate the block-wise analysis and its results, but this value is needlessly small for most modern computers; the default is 5000 which is appropriate for most modern desktops. If the reader has access to a large workstation with more than 4 GB of memory, the parameter maxBlockSize can be increased. A 16GB workstation should handle up to 20000 probes; a 32GB workstation should handle perhaps 30000. A 4GB standard desktop or a laptop may handle up to 8000-10000 probes, depending on operating system and other running programs. In general it is preferable to analyze a data set in as few blocks as possible. Below we will compare the results of this analysis to the results of Section 2.a in which all genes were analyzed in a single block. To make the comparison easier, we relabel the block-wise module labels so that modules with a significant overlap with single-block modules have the same label:
-
 ### Brain
 
 ``` r
@@ -1684,5 +1675,60 @@ pancreas_blockgenes4 = bwnet_pancreas$blockGenes[[4]];
 save(pancreas_MEs, pancreas_moduleLabels, pancreas_moduleColors, pancreas_geneTree1, pancreas_geneTree2,pancreas_geneTree3, pancreas_geneTree4, pancreas_blockgenes1, pancreas_blockgenes2, pancreas_blockgenes3, pancreas_blockgenes4,
      file = "Pancreas-networkConstruction-auto.RData")
 ```
+
+# Session Info
+
+``` r
+sessionInfo()
+```
+
+    ## R version 4.0.3 (2020-10-10)
+    ## Platform: x86_64-w64-mingw32/x64 (64-bit)
+    ## Running under: Windows 10 x64 (build 15063)
+    ## 
+    ## Matrix products: default
+    ## 
+    ## locale:
+    ## [1] LC_COLLATE=English_United States.1252 
+    ## [2] LC_CTYPE=English_United States.1252   
+    ## [3] LC_MONETARY=English_United States.1252
+    ## [4] LC_NUMERIC=C                          
+    ## [5] LC_TIME=English_United States.1252    
+    ## 
+    ## attached base packages:
+    ## [1] stats     graphics  grDevices utils     datasets  methods   base     
+    ## 
+    ## other attached packages:
+    ## [1] dlfUtils_0.8.0        WGCNA_1.69            fastcluster_1.1.25   
+    ## [4] dynamicTreeCut_1.63-1
+    ## 
+    ## loaded via a namespace (and not attached):
+    ##  [1] Biobase_2.50.0        bit64_4.0.5           splines_4.0.3        
+    ##  [4] foreach_1.5.1         R.utils_2.10.1        Formula_1.2-4        
+    ##  [7] stats4_4.0.3          latticeExtra_0.6-29   blob_1.2.1           
+    ## [10] yaml_2.2.1            impute_1.62.0         pillar_1.4.7         
+    ## [13] RSQLite_2.2.1         backports_1.2.0       lattice_0.20-41      
+    ## [16] glue_1.4.2            digest_0.6.27         RColorBrewer_1.1-2   
+    ## [19] checkmate_2.0.0       colorspace_2.0-0      htmltools_0.5.0      
+    ## [22] preprocessCore_1.50.0 Matrix_1.2-18         R.oo_1.24.0          
+    ## [25] pkgconfig_2.0.3       purrr_0.3.4           GO.db_3.12.1         
+    ## [28] scales_1.1.1          jpeg_0.1-8.1          tibble_3.0.4         
+    ## [31] htmlTable_2.1.0       generics_0.1.0        IRanges_2.24.0       
+    ## [34] ggplot2_3.3.2         ellipsis_0.3.1        nnet_7.3-14          
+    ## [37] BiocGenerics_0.36.0   survival_3.2-7        magrittr_2.0.1       
+    ## [40] crayon_1.3.4          rslurm_0.6.0          memoise_1.1.0        
+    ## [43] evaluate_0.14         R.methodsS3_1.8.1     doParallel_1.0.16    
+    ## [46] foreign_0.8-80        tools_4.0.3           data.table_1.13.4    
+    ## [49] lifecycle_0.2.0       matrixStats_0.57.0    stringr_1.4.0        
+    ## [52] S4Vectors_0.28.0      munsell_0.5.0         cluster_2.1.0        
+    ## [55] AnnotationDbi_1.52.0  compiler_4.0.3        tinytex_0.27         
+    ## [58] rlang_0.4.9           grid_4.0.3            iterators_1.0.13     
+    ## [61] rstudioapi_0.13       htmlwidgets_1.5.2     base64enc_0.1-3      
+    ## [64] rmarkdown_2.5         gtable_0.3.0          codetools_0.2-16     
+    ## [67] DBI_1.1.0             R6_2.5.0              gridExtra_2.3        
+    ## [70] knitr_1.30            dplyr_1.0.2           bit_4.0.4            
+    ## [73] Hmisc_4.4-1           stringi_1.5.3         parallel_4.0.3       
+    ## [76] Rcpp_1.0.5            vctrs_0.3.5           rpart_4.1-15         
+    ## [79] png_0.1-7             tidyselect_1.1.0      xfun_0.19
 
 Langfelder, Peter, and Steve Horvath. 2008. “WGCNA: an R package for weighted correlation network analysis.” doi:[10.1186/1471-2105-9-559](https://doi.org/10.1186/1471-2105-9-559).
