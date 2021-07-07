@@ -42,4 +42,5 @@ Note: Because we are not the owners of the dataset, we do not provide here the g
 
 5. Functional_analysis: gene ontology over-representation analysis
    1. functional_analysis.md: markdown documentation file
-   2. 
+   2. vst_XXXX_counts.txt: vst-transformed count data for each tissue (resulting from the pre-processing and normalization steps)
+   3. upsetList_XXXX_trendyYYYY.txt: gene lists resulting from the overlap between trendy and hub genes for each significant module of each tissue (resulting from the module-trait association analysis)
