@@ -160,7 +160,7 @@ datasets[datasets$dataset=="mmusculus_gene_ensembl",]
 # 
 # write.table(annotation, "annotation.txt", row.names = F, quote=F)
 
-#annotation downloaded in May 17th 2021
+#annotation downloaded in March 25th 2021
 annotation <- read.table("annotation.txt", header = T)
 ```
 
